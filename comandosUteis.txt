@@ -1,0 +1,16 @@
+Comandos úteis
+
+Comandos Maven
+mvn spring-javaformat:apply
+mvn clean install -Dmaven.test.skip=true
+mvn clean install -DskipTests=true (esse compila os testes, mas não faz os testes)
+mvn spring-boot:run (roda o projeto pela linha de comando)
+mvn clean install -DskipTests=true -U (força uma nova versão do Snapshot, mesmo que tenha cacheado a versão anterior)
+
+Comandos diversos
+
+Quando a porta 8080 está ocupada e quiser liberar: 
+netstat -ano | findstr "8080" 
+taskkill /F /PID <ID> (trocar <ID> pelo id q aparece do comando de cima)
+
+

@@ -1,0 +1,12 @@
+Passo a passo para criar o SSH Key
+
+1 - Acessar a pasta do MobaXterm
+2 - Usar "ssh-keygen"
+3 - Criar uma palavra chave
+4 - Pelo GitBash, acessar a pasta do Moba. Usar "eval $(ssh-agent)"
+5 - Vai retornar o pid
+6 - Usar "ssh-add .ssh/id_rsa", sendo id_rsa = private_key_file
+7 - Abrir o arquivo "id_rsa.pub" e pegar o código da chave.
+8 - Acessar o Bitbucket e inserir o código https://stash.pontoslivelo.com.br/plugins/servlet/ssh/account/keys
+9 - Usar o comando "ssh -T git@stash.pontoslivelo.com.br -p 7999"
+

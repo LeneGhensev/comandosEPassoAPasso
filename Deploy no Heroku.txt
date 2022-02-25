@@ -1,0 +1,56 @@
+Token git:
+- entrar na conta > clicar no seu avatar no canto direito superior > settings > Developer settings > Personal access token > Generate new token
+
+
+Antes a gente fazia o deploy usando o heroku maven plugin.
+https://www.callicoder.com/deploy-host-spring-boot-apps-on-heroku/
+Usando esta sessao: Deploying a Spring Boot app on Heroku using Heroku Maven Plugin:
+- adicionar o plugin no pom.xml
+- adicionar a variavel de ambiente com HEROKU_API_KEY
+- para pegar a api key: heroku.com/account
+- e no windows pesquisar por variavel de ambiente para entrar naquela tela do windows e cadastrar a variavel de ambiente
+- colocar isso no application.properties: server.port=${PORT:8080}
+- colocava o plugin com as configurações adequadas
+[
+<plugin>
+<groupId>com.heroku.sdk</groupId>
+<artifactId>heroku-maven-plugin</artifactId>
+<version>3.0.4</version>
+<configuration>
+<appName>felipeteste1</appName>
+<includeTarget>false</includeTarget>
+<includes>
+<include>target/felipeteste1-2.5.3.jar</include>
+</includes>
+<jdkVersion>${java.version}</jdkVersion>
+<processTypes>
+<web>java $JAVA_OPTS -jar target/felipeteste1-2.5.3.jar</web>
+</processTypes>
+</configuration>
+</plugin>
+]
+
+- rodava o maven: mvn clean install -Dmaven.test.skip=true
+- E, finalmente, para o deploy: mvn clean -Dmaven.test.skip=true heroku:deploy
+
+
+Agora, usando o heroku-cli:
+- Instalou o heroku-cli usando o scoop
+- scoop search heroku [o heroku está dentro do bucket main, é preciso adicioná-lo, se precisar adicionar o bucket: 'scoop bucket add main']
+- scoop install heroku-cli
+- criação do 'Procfile' na raíz do projeto. (dentro do Procfile: web: java -jar target/<cobrowsingDashboard-0.0.1-SNAPSHOT.jar>)
+- criação de 'system.properties' (dentro do system.properties: java.runtime.version=11)
+- Instalar o heroku deploy: heroku plugins:install heroku-cli-deploy
+- Comandos úteis:
+heroku help (ou heroku --help)
+heroku login (caso seja necessário fazer login, se você tiver a varíavel de ambiente HEROKU_API_KEY do heroku.com/account, não precisa)
+heroku apps (mostra a lista de apps)
+heroku logs --app <cobrowsing-dash> --tail (comando para ver os logs)
+heroku run bash --app <cobrowsing-dash> (entra no bash da máquina, daí podemos, por exemplo, verificar o java da máquina [java -version])
+heroku deploy:jar target/<cobrowsingDashboard-0.0.1-SNAPSHOT.jar> --app <cobrowsing-dash>
+heroku open --app <nome do app> (abri o app no browser)
+- Para fazer a compilação e o deploy:
+- entrar dentro da pasta do projeto
+- mvn clean install -Dmaven.test.skip=true
+- heroku deploy:jar target/<cobrowsingDashboard-0.0.1-SNAPSHOT.jar> --app <cobrowsing-dash>
+

@@ -1,0 +1,49 @@
+Comandos Docker:
+
+- docker container prune = remove todos os containers parados.
+
+- docker images = exibe as imagens da máquina.
+
+- docker ps = consulta os containers que estão sendo executados.
+
+- docker ps -a = consulta todos os containers, inclusive os parados.
+
+- docker rm 05025384675e = remove o container 0502...
+
+- docker rmi hello-world = remove a imagem hello-world.
+
+- docker run hello-world = cria um container com a imagem chamada “hello-world”. Se não tiver já salvo localmente, ele busca no Docker Hub.
+
+- docker run dockersamples/static-site = cria um container com a imagem chamada “static-site”. Mas por não ser oficial, precisa do username.
+
+- docker run -d dockersamples/static-site = idem acima, mas sem atrelar ao terminal.
+
+- docker run -d -P dockersamples/static-site = idem acima, mas também linka a porta interna do container a uma porta do computador. Para visualizar a porta, usar “Docker ps” ou “Docker port 05025...(id do container)”.
+
+- docker run -d -P --name meu-site dockersamples/static-site = idem acima, mas dá um nome para o container pra não precisar usar o id aleatório.
+
+- docker run -d -p 12345:80 dockersamples/static-site = cria o container e ao invés de linkar a uma porta aleatória, já define a porta 80 do container à porta 12345 do computador.
+
+- docker run -d -P -e AUTHOR="Lene Ghensev" dockersamples/static-site = atribui uma variável de ambiente no container.
+
+- docker run -it ubuntu = torna o terminal interativo pra trabalhar dentro do container. Para sair, usar Ctrl+D.
+
+- docker run -v "/var/www" ubuntu = cria o container com um volume com o nome /var/www. E para saber a pasta que foi salvo na máquina, usar docker inspect 8cf7b40ce226 (no item “mounts”, “source”.
+
+- docker run -v "C:\Users\Alura\Desktop:/var/www" ubuntu = cria o container com um volume e define o local onde será salvo na máquina e o nome da pasta. 
+
+- docker run -v "C:\Users\Alura\Desktop\volume-exemplo:/var/www" node npm start = idem acima e iniciando o servidor.
+
+- docker run -p 8080:3000 -v "C:\Users\Alura\Desktop\volume-exemplo:/var/www" -w "/var/www" node npm start = cria o container, define a porta (-p 8080:3000), cria um volume (-v), define o local que será salvo ("C:\Users\Alura\Desktop\volume-exemplo:), define o nome da pasta (/var/www") e diz qual é o diretório que o comando deve ser executado (-w "/var/www").
+
+- docker start 05025384675e = roda o container 0502... que já foi criado, mas não atrela ao terminal.
+
+- docker start -a -i 05025384675e = inicia o container 0502... a de attach para atrelar os terminais e i de interactive para poder escrever no terminal.
+
+- docker stop 05025384675e = pára o container 0502...
+
+- docker stop $(docker ps -q)= pára todos os containers que estão rodando.
+
+- docker stop -t 0 $(docker ps -q)= idem acima, só que em 0 segundos.
+
+- docker version = verifica a versão do Docker

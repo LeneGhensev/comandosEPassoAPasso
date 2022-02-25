@@ -1,0 +1,28 @@
+Comandos Bash
+
+•	cat “nome do arquivo” = vê o que está dentro do arquivo.
+•	cd - = volta na última pasta que estava trabalhando.
+•	cd ../../ = volta duas pastas para cima.
+•	Ctrl + A = volta para o começo da linha.
+•	Ctrl + E = final da linha.
+•	Ctrl + C = pra sair do programa e matar o processo. Para sair sem matar o processo, usar Ctrl + Z.
+•	Ctrl + L = clear, limpa o terminal.
+•	Ctrl + U = apaga a linha toda.
+•	explorer . = abre o explorer na pasta onde está o Moba.
+•	jobs = consulta trabalhos em andamento. / para voltar pro job, usar bg.
+•	ls = mosta os arquivos da pasta.
+•	ls -la = mosta os arquivos ocultos também.
+•	mkdir <nomedoarquivo> = para criar um novo arquivo 
+•	touch “nome do arquivo” = criar um arquivo sem precisar inserir conteúdo nele.
+•	vim “nome do arquivo” = abre o arquivo para edição.
+
+Edição de arquivos
+
+•	i = habilita digitação.
+•	Tecla ESC = sai do modo edição.
+•	:q! = depois de clicar esc, digitar pra sair sem salvar.
+•	:wq! = depois de clicar esc, salvar e sair.
+
+Como acessar ultimos comandos do Moba
+1 - Abrir terminal na home do Moba
+2 - Acessar aquivo bash_history: tail -n 30 .bash_history

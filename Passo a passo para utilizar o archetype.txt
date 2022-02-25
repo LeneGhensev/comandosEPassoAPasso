@@ -1,0 +1,29 @@
+1 - Criar uma pasta para o projeto.
+	1.1 - cd archetype
+	1.2 - mkdir testeArchetype	
+	1.3 - cd testeArchetype
+
+2 - Acessar a pasta.
+
+3 - Acessar o bitbucket só pra mostrar o Archetype
+	https://stash.pontoslivelo.com.br/projects/
+	Livelo Templates > livelo-spring-boot-java11-archetype
+
+	3.2 - Mostrar o README
+	Mostrar o comando pra fazer a utilização do Archetype
+
+4 - Volta pro terminal e joga o comando da criação do archetype
+			mvn archetype:generate -DarchetypeGroupId=br.com.livelo.example \
+                       -DarchetypeArtifactId=livelo-spring-boot-java11-archetype \
+                       -DarchetypeVersion=0.0.9 \
+
+5 - Add ArtifactId: example
+    add version: só enter
+    package: example
+    groupId: example
+    Y: clicar enter
+
+6 - Acessar a pasta e mostrar o projeto
+	6.1 - open .
+	6.2 - Mostrar na pasta que tem o projeto de exemplo base 
+	(src > main > java > example > br > com > livelo)
